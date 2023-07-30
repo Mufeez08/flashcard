@@ -32,6 +32,11 @@ app.post("/deck",async (req,res)=>{
     res.json(response); 
 })
 
+app.delete("/deck/:deckId",async (req,res)=>{
+    const deckId = req.params.deckId;
+    const response = await DeckModel.findByIdAndDelete(deckId);
+    res.json(response);
+})
 
 
 mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }).then(
