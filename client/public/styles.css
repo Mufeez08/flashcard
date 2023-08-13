@@ -14,7 +14,13 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
+.Header{
+    height: 50px;
+    background: white;
+    display: flex;
+    justify-content:space-between;
 
+}
 a {
     font-weight: 500;
     color: #646cff;
@@ -76,12 +82,17 @@ button:focus-visible {
 .page {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 }
 
-.container {
+.Header .container {
     width: 800px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
     margin: 0 auto;
+    align-items: center;
+
 }
 
 .App {
@@ -101,6 +112,7 @@ button:focus-visible {
 .App h1 {
     font-size: 32px;
     text-align: center;
+    color: #f9f9f9;
 }
 
 .decks {
@@ -113,6 +125,7 @@ button:focus-visible {
 }
 
 .decks li {
+    padding: 30px;
     position: relative;
     display: flex;
     justify-content: center;

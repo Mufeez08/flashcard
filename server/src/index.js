@@ -3,6 +3,12 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import DeckModel from "./models/Deck.js";
 import cors from "cors";
+import { getDecksController } from "./controllers/getDecksController.js";
+import { createDeckController } from "./controllers/createDeckController.js";
+import { deleteDeckController } from "./controllers/deleteDeckController.js";
+import { createCardForDeckController } from "./controllers/createCardForDeckController.js";
+import { getDeckController } from "./controllers/getDeckController.js";
+import { deleteCardOnDeckController } from "./controllers/deleteCardOnDeckController.js";
 const app = express();
 
 app.use(cors({origin:"*"}));
@@ -17,26 +23,12 @@ app.get("/", (req,res)=>{
     res.send("hello world");
 });
 
-app.get("/deck",async (req,res)=>{
-    const response = await DeckModel.find();
-    //console.log(response);
-    res.json(response);
-})
-
-app.post("/deck",async (req,res)=>{
-    const newDeck = new DeckModel({
-        title: req.body.title 
-    });
-    const response = await newDeck.save();
-    //console.log(response);
-    res.json(response); 
-})
-
-app.delete("/deck/:deckId",async (req,res)=>{
-    const deckId = req.params.deckId;
-    const response = await DeckModel.findByIdAndDelete(deckId);
-    res.json(response);
-})
+app.get("/deck",getDecksController);
+app.post("/deck",createDeckController);
+app.delete("/deck/:deckId",deleteDeckController);
+app.get("/deck/:deckId",getDeckController);
+app.post("/deck/:deckId/cards",createCardForDeckController);
+app.delete("/deck/:deckId/cards/:index",deleteCardOnDeckController);
 
 
 mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }).then(

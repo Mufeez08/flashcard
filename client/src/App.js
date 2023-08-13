@@ -33,12 +33,14 @@ function App() {
   },[]);
 
   return (
-    <div className="App">
+    <div className='container'>
+      <div className="App">
+    <h1>Your Decks</h1>
     <ul className='decks'>
         {decks.map((deck)=>(
           <li key={deck._id}>
             <button onClick={()=>handleDeleteClick(deck._id)}>X</button>
-            <Link to={`decks/${deck._id}`}>{deck.title}</Link>
+            <Link to={`deck/${deck._id}`}>{deck.title}</Link>
           </li> 
           
           )
@@ -50,6 +52,8 @@ function App() {
         <button>Create Deck</button>
       </form>
     </div>
+    </div>
+    
   );
 }
 

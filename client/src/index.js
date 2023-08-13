@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Deck from "./Deck";
 import reportWebVitals from './reportWebVitals';
+import { Header } from './Header';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/decks/:deckId",
+    path: "/deck/:deckId",
     element: <Deck />
   }
 ]);
@@ -23,8 +24,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  <div className='page'>
+    <Header></Header>
     <RouterProvider router={router} />
-    
+  </div>
   </React.StrictMode>
 );
 
